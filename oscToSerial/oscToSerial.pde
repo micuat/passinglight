@@ -5,6 +5,7 @@ import oscP5.*;
 import netP5.*;
 
 OscP5 oscP5;
+NetAddress netAddress;
 
 Serial serial;
 
@@ -18,11 +19,12 @@ void setup()
   serial = new Serial(this, portName, 115200);
 
   oscP5 = new OscP5(this, 5005);
+  netAddress = new NetAddress("127.0.0.1", 5006);
 
-  int d1 = 10 * 1000;//25 * 1000;
-  int d2 = 10 * 1000;//25 * 1000;
+  int d1 = 20 * 1000;//25 * 1000;
+  int d2 = 20 * 1000;//25 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
-  timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1 + d2);
+  timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
 }
 
 void draw() {
@@ -35,12 +37,30 @@ void draw() {
 }
 
 void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
+  OscMessage m;
+  m = new OscMessage("/passing/vvvv/tween");
+  if (t == timer1) {
+    //println("first one tick");
+    float t0 = t.getTimerDuration() - t.getTimeLeftUntilFinish();
+    float t1 = 10 * 1000; // sec
+    float p = constrain(map(t0, 0, t1, 0, 1), 0, 1);
+    m.add(p);
+    oscP5.send(m, netAddress);
+  } else if (t == timer2) {
+    //println("second one tick");
+    float t0 = t.getTimerDuration() - t.getTimeLeftUntilFinish();
+    float t1 = 10 * 1000; // sec
+    float p = constrain(map(t0, 0, t1, 1, 0), 0, 1);
+    m.add(p);
+    oscP5.send(m, netAddress);
+  } else return;
 }
 
 void onFinishEvent(CountdownTimer t) {
   if (t == timer1) {
     //println("first one finished");
     serial.write("UNROTATE\n");
+    timer2.start();
   } else if (t == timer2) {
     //println("second one finished");
   }
@@ -53,9 +73,8 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (timer2.isRunning() == false) {
+  if (timer1.isRunning() == false && timer2.isRunning() == false) {
     timer1.start();
-    timer2.start();
 
     float x = mouseX - width/2;
     float y = height/2 - mouseY;
@@ -72,13 +91,10 @@ void oscEvent(OscMessage m) {
   println(m.addrPattern() + " " + m.typetag());
 
   if (m.checkAddrPattern("/passing/plate/tip")) {
-    if (timer2.isRunning()) {
-      println("already running, reject");
-    } else {
+    if (timer1.isRunning() == false && timer2.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
       timer1.start();
-      timer2.start();
 
       if (dir.equals("right")) {
         serial.write("ROTATE " + str(0) + "\n");
@@ -91,6 +107,8 @@ void oscEvent(OscMessage m) {
       } else {
         println("wrong parameter!");
       }
+    } else {
+      println("already running, reject");
     }
   }
 }
