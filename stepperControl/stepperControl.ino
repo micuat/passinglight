@@ -36,7 +36,7 @@ int counterId1, counterId2;
 int id1Preset[] = {0,  1, 1,  2, 2,  3, 3,  0};
 int id2Preset[] = {1, -1, 2, -1, 3, -1, 0, -1};
 
-const int stepCount = 640 * 8;
+const int stepCount = 640 * 12;
 
 void rotate() {
   if(bRotated == true) return;
