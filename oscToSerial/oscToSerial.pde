@@ -96,16 +96,13 @@ void oscEvent(OscMessage m) {
       println(m.get(0).stringValue());
       timer1.start();
 
-      if (dir.equals("right")) {
-        serial.write("ROTATE " + str(0) + "\n");
-      } else if (dir.equals("up")) {
-        serial.write("ROTATE " + str(2) + "\n");
-      } else if (dir.equals("left")) {
-        serial.write("ROTATE " + str(4) + "\n");
-      } else if (dir.equals("down")) {
-        serial.write("ROTATE " + str(6) + "\n");
-      } else {
-        println("wrong parameter!");
+      switch(int(floor(random(3)))) {
+      case 0:
+        serial.write("ROTATE " + str(0) + "\n"); // right
+      case 1:
+        serial.write("ROTATE " + str(4) + "\n"); // left
+      default:
+        serial.write("ROTATE " + str(6) + "\n"); // down
       }
     } else {
       println("already running, reject");
