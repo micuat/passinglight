@@ -21,8 +21,8 @@ void setup()
   oscP5 = new OscP5(this, 5005);
   netAddress = new NetAddress("127.0.0.1", 5006);
 
-  int d1 = 20 * 1000;//25 * 1000;
-  int d2 = 20 * 1000;//25 * 1000;
+  int d1 = 30 * 1000;//25 * 1000;
+  int d2 = 60 * 1000;//25 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
 }
@@ -60,6 +60,8 @@ void onFinishEvent(CountdownTimer t) {
   if (t == timer1) {
     //println("first one finished");
     serial.write("UNROTATE\n");
+    int d2 = int(30 + random(30)) * 1000;
+    timer2.configure(100, d2);
     timer2.start();
   } else if (t == timer2) {
     //println("second one finished");
@@ -94,6 +96,8 @@ void oscEvent(OscMessage m) {
     if (timer1.isRunning() == false && timer2.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
+      int d1 = int(30 + random(30)) * 1000;
+      timer1.configure(100, d1);
       timer1.start();
 
       switch(int(floor(random(3)))) {
