@@ -162,8 +162,12 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X obj 140 211 > 1;
 #X obj 574 460 line;
 #X msg 537 432 0;
-#X msg 583 430 2.5 2000;
 #X msg 479 432 0 2000;
+#X obj 504 519 line;
+#X msg 467 491 0;
+#X msg 409 491 7.7 2000;
+#X msg 513 489 0.4 2000;
+#X msg 583 430 1.7 2000;
 #X connect 0 0 54 0;
 #X connect 1 0 54 0;
 #X connect 2 0 54 0;
@@ -215,8 +219,10 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 58 0 56 0;
 #X connect 59 0 60 0;
 #X connect 59 1 61 0;
-#X connect 60 0 132 0;
-#X connect 61 0 131 0;
+#X connect 60 0 131 0;
+#X connect 60 0 134 0;
+#X connect 61 0 136 0;
+#X connect 61 0 135 0;
 #X connect 62 0 113 0;
 #X connect 63 0 62 0;
 #X connect 66 0 106 0;
@@ -276,4 +282,8 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 129 0 24 0;
 #X connect 130 0 129 0;
 #X connect 131 0 129 0;
-#X connect 132 0 129 0;
+#X connect 132 0 19 0;
+#X connect 133 0 132 0;
+#X connect 134 0 132 0;
+#X connect 135 0 132 0;
+#X connect 136 0 129 0;
