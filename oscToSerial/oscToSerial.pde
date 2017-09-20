@@ -51,6 +51,17 @@ void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
     float p = constrain(map(t0, 0, t1, 0, 1), 0, 1);
     m.add(p);
     oscP5.send(m, netAddress);
+    if(t0 > 1000 && timer1.isRunning() == false) {
+      switch(int(floor(random(3)))) {
+      case 0:
+        serial.write("ROTATE " + str(0) + "\n"); // right
+      case 1:
+        serial.write("ROTATE " + str(4) + "\n"); // left
+      default:
+        serial.write("ROTATE " + str(6) + "\n"); // down
+      }
+      timer1.start();
+    }
   } else if (t == timerSoft2) {
     //println("second one tick");
     float t0 = t.getTimerDuration() - t.getTimeLeftUntilFinish();
@@ -58,6 +69,10 @@ void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
     float p = constrain(map(t0, 0, t1, 1, 0), 0, 1);
     m.add(p);
     oscP5.send(m, netAddress);
+    if(t0 > 1000 && timer2.isRunning() == false) {
+      serial.write("UNROTATE\n");
+      timer2.start();
+    }
   } else return;
 }
 
@@ -68,11 +83,9 @@ void onFinishEvent(CountdownTimer t) {
     m.add(1);
     oscP5.send(m, netAddressPd);
 
-    serial.write("UNROTATE\n");
-
     int d2 = int(30 + random(30)) * 1000;
     timer2.configure(100, d2);
-    timer2.start();
+    //timer2.start();
     timerSoft2.start();
   } else if (t == timer2) {
     //println("second one finished");
@@ -103,21 +116,12 @@ void oscEvent(OscMessage m) {
       println(m.get(0).stringValue());
       int d1 = int(30 + random(30)) * 1000;
       timer1.configure(100, d1);
-      timer1.start();
+      //timer1.start();
       timerSoft1.start();
 
       OscMessage m2 = new OscMessage("/passing/pd/move");
       m2.add(1);
       oscP5.send(m2, netAddressPd);
-
-      switch(int(floor(random(3)))) {
-      case 0:
-        serial.write("ROTATE " + str(0) + "\n"); // right
-      case 1:
-        serial.write("ROTATE " + str(4) + "\n"); // left
-      default:
-        serial.write("ROTATE " + str(6) + "\n"); // down
-      }
     } else {
       println("already running, reject");
     }
