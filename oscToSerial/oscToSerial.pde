@@ -106,6 +106,10 @@ void onFinishEvent(CountdownTimer t) {
     m = new OscMessage("/passing/vvvv/spawn");
     m.add(1);
     oscP5.send(m, netAddress);
+
+    m = new OscMessage("/passing/pd/spawn");
+    m.add(1);
+    oscP5.send(m, netAddressPd);
   }
 }
 
