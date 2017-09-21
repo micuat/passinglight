@@ -79,7 +79,7 @@ void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
 
 void onFinishEvent(CountdownTimer t) {
   if (t == timer1) {
-    //println("first one finished");
+            //println("first one finished");
     OscMessage m = new OscMessage("/passing/pd/move");
     m.add(1);
     oscP5.send(m, netAddressPd);
@@ -123,7 +123,9 @@ void oscEvent(OscMessage m) {
   println(m.addrPattern() + " " + m.typetag());
 
   if (m.checkAddrPattern("/passing/plate/tip")) {
-    if (timer1.isRunning() == false && timer2.isRunning() == false) {
+    if (timer1.isRunning() == false && timer2.isRunning() == false
+    && timerSoft1.isRunning() == false && timerSoft2.isRunning() == false
+    && timerSoft21.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
       int d1 = int(30 + random(30)) * 1000;
