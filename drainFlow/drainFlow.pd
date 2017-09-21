@@ -1,4 +1,4 @@
-#N canvas 161 203 1051 635 10;
+#N canvas 12 145 1051 635 10;
 #X msg 33 765 avgRate \$1;
 #X msg 129 764 minRadius \$1;
 #X msg 227 764 maxRadius \$1;
@@ -103,7 +103,7 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 329 1112 vsl 15 128 0 10 0 0 empty expRadius2 empty 0 -9 0 10
 -262144 -1 -1 3810 1;
 #X obj 231 1112 vsl 15 128 0.15 150 0 0 empty maxRadius2 empty 0 -9
-0 10 -262144 -1 -1 411 1;
+0 10 -262144 -1 -1 1004 1;
 #X obj 37 1112 vsl 15 128 0 1000 0 0 empty avgRate2 empty 0 -9 0 10
 -262144 -1 -1 0 1;
 #X obj 513 1112 vsl 15 128 0 1 0 0 empty maxDepth2 empty 0 -9 0 10
@@ -115,7 +115,7 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 802 1113 vsl 15 128 0 1 0 0 empty riseCutoff2 empty 0 -9 0 10
 -262144 -1 -1 11430 1;
 #X obj 133 1110 vsl 15 128 0.15 150 0 0 empty minRadius2 empty 0 -9
-0 10 -262144 -1 -1 0 1;
+0 10 -262144 -1 -1 114 1;
 #X obj 423 1111 vsl 15 128 0 1 0 0 empty minDepth2 empty 0 -9 0 10
 -262144 -1 -1 0 1;
 #X text 12 1090 Bubbles/sec;
@@ -152,9 +152,6 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 206 366 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 206 214 < 0.0001;
-#X msg 791 283 \; avgRate2 0 \; minRadius2 0.15 \; maxRadius2 5 \;
-expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
-0.1 \; riseCutoff2 0.9 \;;
 #X text 550 102 fluidflow~ - Liquid sounds model;
 #X msg 231 426 300;
 #X msg 278 426 1600;
@@ -168,6 +165,9 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X msg 409 491 7.7 2000;
 #X msg 513 489 0.4 2000;
 #X msg 583 430 1.7 2000;
+#X msg 791 283 \; avgRate2 0 \; minRadius2 1.5 \; maxRadius2 12 \;
+expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
+0.1 \; riseCutoff2 0.9 \;;
 #X connect 0 0 54 0;
 #X connect 1 0 54 0;
 #X connect 2 0 54 0;
@@ -200,7 +200,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 38 0 39 0;
 #X connect 39 0 40 0;
 #X connect 41 0 64 0;
-#X connect 41 0 123 0;
+#X connect 41 0 136 0;
 #X connect 42 0 43 0;
 #X connect 43 0 44 0;
 #X connect 44 0 45 0;
@@ -219,10 +219,10 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 58 0 56 0;
 #X connect 59 0 60 0;
 #X connect 59 1 61 0;
-#X connect 60 0 131 0;
-#X connect 60 0 134 0;
-#X connect 61 0 136 0;
+#X connect 60 0 130 0;
+#X connect 60 0 133 0;
 #X connect 61 0 135 0;
+#X connect 61 0 134 0;
 #X connect 62 0 113 0;
 #X connect 63 0 62 0;
 #X connect 66 0 106 0;
@@ -258,12 +258,12 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 106 0 105 0;
 #X connect 107 0 49 0;
 #X connect 108 0 107 0;
-#X connect 110 1 125 0;
-#X connect 110 2 126 0;
+#X connect 110 1 124 0;
+#X connect 110 2 125 0;
 #X connect 111 0 112 0;
 #X connect 112 0 120 0;
 #X connect 113 0 122 0;
-#X connect 113 0 128 0;
+#X connect 113 0 127 0;
 #X connect 114 1 116 0;
 #X connect 115 0 111 0;
 #X connect 116 0 111 1;
@@ -273,17 +273,17 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 120 0 121 0;
 #X connect 121 0 110 0;
 #X connect 122 0 114 0;
-#X connect 125 0 107 0;
-#X connect 126 0 127 0;
-#X connect 127 0 108 0;
-#X connect 127 0 109 0;
-#X connect 128 0 117 0;
-#X connect 128 0 118 0;
-#X connect 129 0 24 0;
-#X connect 130 0 129 0;
-#X connect 131 0 129 0;
-#X connect 132 0 19 0;
-#X connect 133 0 132 0;
-#X connect 134 0 132 0;
-#X connect 135 0 132 0;
-#X connect 136 0 129 0;
+#X connect 124 0 107 0;
+#X connect 125 0 126 0;
+#X connect 126 0 108 0;
+#X connect 126 0 109 0;
+#X connect 127 0 117 0;
+#X connect 127 0 118 0;
+#X connect 128 0 24 0;
+#X connect 129 0 128 0;
+#X connect 130 0 128 0;
+#X connect 131 0 19 0;
+#X connect 132 0 131 0;
+#X connect 133 0 131 0;
+#X connect 134 0 131 0;
+#X connect 135 0 128 0;

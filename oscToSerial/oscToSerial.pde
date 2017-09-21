@@ -11,7 +11,7 @@ NetAddress netAddressPd;
 Serial serial;
 
 CountdownTimer timer1, timer2;
-CountdownTimer timerSoft1, timerSoft2;
+CountdownTimer timerSoft1, timerSoft2, timerSoft21;
 
 void setup() 
 {
@@ -29,7 +29,8 @@ void setup()
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
   timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 8 * 1000);
-  timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 12 * 1000);
+  timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 13 * 1000);
+  timerSoft21 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 20 * 1000);
 }
 
 void draw() {
@@ -87,13 +88,24 @@ void onFinishEvent(CountdownTimer t) {
     timer2.configure(100, d2);
     //timer2.start();
     timerSoft2.start();
+    timerSoft21.start();
   } else if (t == timer2) {
     //println("second one finished");
-  } else if (t == timerSoft1 || t == timerSoft2) {
+  } else if (t == timerSoft1) {
     OscMessage m;
     m = new OscMessage("/passing/pd/move");
     m.add(0);
     oscP5.send(m, netAddressPd);
+  } else if (t == timerSoft2) {
+    OscMessage m;
+    m = new OscMessage("/passing/pd/move");
+    m.add(0);
+    oscP5.send(m, netAddressPd);
+  } else if (t == timerSoft21) {
+    OscMessage m;
+    m = new OscMessage("/passing/vvvv/spawn");
+    m.add(1);
+    oscP5.send(m, netAddress);
   }
 }
 
