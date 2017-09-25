@@ -84,7 +84,7 @@ void onFinishEvent(CountdownTimer t) {
     m.add(1);
     oscP5.send(m, netAddressPd);
 
-    int d2 = int(30 + random(30)) * 1000;
+    int d2 = int(30 + random(60)) * 1000;
     timer2.configure(100, d2);
     //timer2.start();
     timerSoft2.start();
@@ -132,7 +132,7 @@ void oscEvent(OscMessage m) {
     && timerSoft21.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
-      int d1 = int(20 + random(10)) * 1000;
+      int d1 = int(30 + random(30)) * 1000;
       timer1.configure(100, d1);
       //timer1.start();
       timerSoft1.start();
