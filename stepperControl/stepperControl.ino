@@ -37,9 +37,10 @@ int id1Preset[] = {0,  1, 1,  2, 2,  3, 3,  0};
 int id2Preset[] = {1, -1, 2, -1, 3, -1, 0, -1};
 
 const int stepCount = 640 * 12;
+const int skipRatio = 141;
 
 void rotate() {
-  if(bRotated == true) return;
+  if (bRotated == true) return;
 
   char *arg;
   arg = command.next();
@@ -64,20 +65,24 @@ void rotate() {
 
   t1 = t2 = 250 * 1.5;
   digitalWrite(DIR[id1], HIGH);
-  if(id2 >= 0) digitalWrite(DIR[id2], HIGH);
+  if (id2 >= 0) digitalWrite(DIR[id2], HIGH);
   digitalWrite(DIR[counterId1], LOW);
-  if(id2 >= 0) digitalWrite(DIR[counterId2], LOW);
+  if (id2 >= 0) digitalWrite(DIR[counterId2], LOW);
   for (int i = 0; i < stepCount; i++)
   {
-    digitalWrite(PUL[id1], HIGH);
-    if(id2 >= 0) digitalWrite(PUL[id2], HIGH);
+    if (i % skipRatio != 0) {
+      digitalWrite(PUL[id1], HIGH);
+      if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
+    }
     digitalWrite(PUL[counterId1], HIGH);
-    if(id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
+    if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
     delayMicroseconds(t1);
-    digitalWrite(PUL[id1], LOW);
-    if(id2 >= 0) digitalWrite(PUL[id2], LOW);
+    if (i % skipRatio != 0) {
+      digitalWrite(PUL[id1], LOW);
+      if (id2 >= 0) digitalWrite(PUL[id2], LOW);
+    }
     digitalWrite(PUL[counterId1], LOW);
-    if(id2 >= 0) digitalWrite(PUL[counterId2], LOW);
+    if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
     delayMicroseconds(t2);
   }
   delay(50);
@@ -86,23 +91,27 @@ void rotate() {
 }
 
 void unrotate() {
-  if(bRotated == false) return;
+  if (bRotated == false) return;
   t1 = t2 = 250 * 3;
   digitalWrite(DIR[id1], LOW);
-  if(id2 >= 0) digitalWrite(DIR[id2], LOW);
+  if (id2 >= 0) digitalWrite(DIR[id2], LOW);
   digitalWrite(DIR[counterId1], HIGH);
-  if(id2 >= 0) digitalWrite(DIR[counterId2], HIGH);
+  if (id2 >= 0) digitalWrite(DIR[counterId2], HIGH);
   for (int i = 0; i < stepCount; i++)
   {
-    digitalWrite(PUL[id1], HIGH);
-    if(id2 >= 0) digitalWrite(PUL[id2], HIGH);
+    if (i % skipRatio != 0) {
+      digitalWrite(PUL[id1], HIGH);
+      if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
+    }
     digitalWrite(PUL[counterId1], HIGH);
-    if(id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
+    if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
     delayMicroseconds(t1);
-    digitalWrite(PUL[id1], LOW);
-    if(id2 >= 0) digitalWrite(PUL[id2], LOW);
+    if (i % skipRatio != 0) {
+      digitalWrite(PUL[id1], LOW);
+      if (id2 >= 0) digitalWrite(PUL[id2], LOW);
+    }
     digitalWrite(PUL[counterId1], LOW);
-    if(id2 >= 0) digitalWrite(PUL[counterId2], LOW);
+    if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
     delayMicroseconds(t2);
   }
 
