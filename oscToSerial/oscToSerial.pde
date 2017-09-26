@@ -28,7 +28,7 @@ void setup()
   int d2 = 60 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
-  timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 8 * 1000);
+  timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 10 * 1000);
   timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 13 * 1000);
   timerSoft21 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 20 * 1000);
 }

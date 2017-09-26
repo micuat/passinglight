@@ -13,8 +13,8 @@ void setup()
   String portName = Serial.list()[0];
   serial = new Serial(this, portName, 115200);
 
-  int d1 = 10 * 1000;
-  int d2 = 10 * 1000;
+  int d1 = 15 * 1000;
+  int d2 = 15 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
 }

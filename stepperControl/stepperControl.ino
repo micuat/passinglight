@@ -63,7 +63,7 @@ void rotate() {
   counterId1 = (id1 + 2) % 4;
   counterId2 = (id2 < 0) ? -1 : (id1 + 2 + 1) % 4;
 
-  t1 = t2 = 250 * 1.5;
+  t1 = t2 = 250 * 2;
   digitalWrite(DIR[id1], HIGH);
   if (id2 >= 0) digitalWrite(DIR[id2], HIGH);
   digitalWrite(DIR[counterId1], LOW);
