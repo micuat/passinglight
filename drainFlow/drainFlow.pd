@@ -218,6 +218,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X obj 838 162 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 801 130 delay 1000;
+#X msg 942 163 \; pd dsp 1;
 #X connect 0 0 153 0;
 #X connect 1 0 153 0;
 #X connect 2 0 153 0;
@@ -366,7 +367,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 169 0 170 0;
 #X connect 170 0 166 0;
 #X connect 171 0 169 0;
-#X connect 172 0 173 0;
+#X connect 172 0 175 0;
 #X connect 173 0 57 0;
 #X connect 173 0 160 0;
 #X connect 173 0 156 0;
