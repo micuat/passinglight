@@ -88,6 +88,7 @@ void onFinishEvent(CountdownTimer t) {
     timer2.configure(100, d2);
     //timer2.start();
     timerSoft2.start();
+    timerSoft21.configure(100, int(20 + random(20)) * 1000);
     timerSoft21.start();
   } else if (t == timer2) {
     //println("second one finished");
@@ -127,12 +128,13 @@ void oscEvent(OscMessage m) {
   println(m.addrPattern() + " " + m.typetag());
 
   if (m.checkAddrPattern("/passing/plate/tip")) {
-    if (timer1.isRunning() == false && timer2.isRunning() == false
+    if (random(1.0) > 0.5
+    && timer1.isRunning() == false && timer2.isRunning() == false
     && timerSoft1.isRunning() == false && timerSoft2.isRunning() == false
     && timerSoft21.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
-      int d1 = int(30 + random(30)) * 1000;
+      int d1 = int(20 + random(10)) * 1000;
       timer1.configure(100, d1);
       //timer1.start();
       timerSoft1.start();

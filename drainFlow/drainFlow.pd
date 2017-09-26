@@ -217,8 +217,8 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X msg 942 163 \; pd dsp 1;
 #X obj 115 228 clip 0 0.05;
 #X obj 122 469 * -100;
-#X obj 33 845 *~ 1.9;
 #X obj 115 206 - 0.1;
+#X obj 33 845 *~ 1.9;
 #X connect 0 0 153 0;
 #X connect 1 0 153 0;
 #X connect 2 0 153 0;
@@ -349,7 +349,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 142 0 127 0;
 #X connect 150 0 118 0;
 #X connect 151 0 117 0;
-#X connect 153 0 174 0;
+#X connect 153 0 175 0;
 #X connect 154 0 115 1;
 #X connect 155 0 114 1;
 #X connect 157 0 158 0;
@@ -359,7 +359,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 162 0 163 0;
 #X connect 163 0 167 0;
 #X connect 163 0 167 1;
-#X connect 163 0 175 0;
+#X connect 163 0 174 0;
 #X connect 164 0 162 0;
 #X connect 165 0 166 0;
 #X connect 166 0 26 0;
@@ -370,5 +370,5 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 170 0 169 0;
 #X connect 172 0 173 0;
 #X connect 173 0 165 0;
-#X connect 174 0 114 0;
-#X connect 175 0 172 0;
+#X connect 174 0 172 0;
+#X connect 175 0 114 0;
