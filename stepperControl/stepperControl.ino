@@ -37,7 +37,7 @@ int id1Preset[] = {0,  1, 1,  2, 2,  3, 3,  0};
 int id2Preset[] = {1, -1, 2, -1, 3, -1, 0, -1};
 
 const int stepCount = 640 * 12;
-const int skipRatio = 130;
+const int skipRatio = 200;
 
 void rotate() {
   if (bRotated == true) return;
@@ -70,6 +70,10 @@ void rotate() {
   if (id2 >= 0) digitalWrite(DIR[counterId2], LOW);
   for (int i = 0; i < stepCount; i++)
   {
+    if(i > stepCount - 1000 && t1 < 1000) {
+      t1 = t2 = t1 + 1;
+    }
+
     digitalWrite(PUL[id1], HIGH);
     if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
     if (i % skipRatio != 0) {
@@ -99,6 +103,10 @@ void unrotate() {
   if (id2 >= 0) digitalWrite(DIR[counterId2], HIGH);
   for (int i = 0; i < stepCount; i++)
   {
+//    if(i > stepCount - 500) {
+//      t1 = t2 = t1 + 1;
+//    }
+
     if (i % skipRatio != 0) {
       digitalWrite(PUL[id1], HIGH);
       if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
