@@ -57,17 +57,19 @@ void keyPressed() {
 }
 
 void mousePressed() {
-  if (timer1.isRunning() == false && timer2.isRunning() == false) {
-    switch(int(floor(random(3)))) {
-    case 0:
-      serial.write("ROTATE " + str(0) + "\n"); // right
-    case 1:
-      serial.write("ROTATE " + str(4) + "\n"); // left
-    case 2:
-      serial.write("ROTATE " + str(2) + "\n"); // left
-    default:
-      serial.write("ROTATE " + str(6) + "\n"); // down
+  if (mouseButton == LEFT) {
+    if (timer1.isRunning() == false && timer2.isRunning() == false) {
+      switch(int(floor(random(3)))) {
+      case 0:
+        serial.write("ROTATE " + str(0) + "\n"); // right
+      case 1:
+        serial.write("ROTATE " + str(4) + "\n"); // left
+      case 2:
+        serial.write("ROTATE " + str(2) + "\n"); // left
+      default:
+        serial.write("ROTATE " + str(6) + "\n"); // down
+      }
+      timer1.start();
     }
-    timer1.start();
   }
 }
