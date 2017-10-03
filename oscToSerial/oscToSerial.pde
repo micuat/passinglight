@@ -13,6 +13,8 @@ Serial serial;
 CountdownTimer timer1, timer2;
 CountdownTimer timerSoft1, timerSoft2, timerSoft21;
 
+int tipDirection = 0;
+
 void setup() 
 {
   size(200, 200);
@@ -50,28 +52,33 @@ void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
     float t0 = t.getTimerDuration() - t.getTimeLeftUntilFinish();
     float t1 = t.getTimerDuration();
     float p = constrain(map(t0, 0, t1, 0, 1), 0, 1);
-    m.add(p);
-    oscP5.send(m, netAddress);
     if(t0 > 1000 && timer1.isRunning() == false) {
       switch(int(floor(random(3)))) {
       case 0:
         serial.write("ROTATE " + str(0) + "\n"); // right
+        tipDirection = 2;
         break;
       case 1:
         serial.write("ROTATE " + str(4) + "\n"); // left
+        tipDirection = 0;
         break;
       default:
         serial.write("ROTATE " + str(6) + "\n"); // down
+        tipDirection = 1;
         break;
       }
       timer1.start();
     }
+    m.add(p);
+    m.add((float)tipDirection);
+    oscP5.send(m, netAddress);
   } else if (t == timerSoft2) {
     //println("second one tick");
     float t0 = t.getTimerDuration() - t.getTimeLeftUntilFinish();
     float t1 = t.getTimerDuration();
     float p = constrain(map(t0, 0, t1, 1, 0), 0, 1);
     m.add(p);
+    m.add((float)tipDirection);
     oscP5.send(m, netAddress);
     if(t0 > 1000 && timer2.isRunning() == false) {
       serial.write("UNROTATE\n");
