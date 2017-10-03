@@ -28,8 +28,8 @@ void setup()
   int d2 = 15 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
-  timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 10 * 1000);
-  timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 13 * 1000);
+  timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 8 * 1000);
+  timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 12 * 1000);
   timerSoft21 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 18 * 1000);
 }
 
@@ -56,10 +56,13 @@ void onTickEvent(CountdownTimer t, long timeLeftUntilFinish) {
       switch(int(floor(random(3)))) {
       case 0:
         serial.write("ROTATE " + str(0) + "\n"); // right
+        break;
       case 1:
         serial.write("ROTATE " + str(4) + "\n"); // left
+        break;
       default:
         serial.write("ROTATE " + str(6) + "\n"); // down
+        break;
       }
       timer1.start();
     }
