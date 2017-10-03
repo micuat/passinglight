@@ -21,7 +21,7 @@
 SOb - soundobject.org \; Project CLOSED - closed.ircam.fr \; Project
 NIW - soundobject.org/niw \; Project SkAT-VG - skatvg.eu;
 #X obj 325 581 vsl 15 128 0 10 0 0 empty expRadius1 empty 0 -9 0 10
--262144 -1 -1 9779 1;
+-262144 -1 -1 508 1;
 #X obj 227 581 vsl 15 128 0.15 150 0 0 empty maxRadius1 empty 0 -9
 0 10 -262144 -1 -1 1428 1;
 #X obj 33 581 vsl 15 128 0 1000 0 0 empty avgRate1 empty 0 -9 0 10
@@ -31,11 +31,11 @@ NIW - soundobject.org/niw \; Project SkAT-VG - skatvg.eu;
 #X obj 601 582 vsl 15 128 0 10 0 0 empty expDepth1 empty 0 -9 0 10
 -262144 -1 -1 381 1;
 #X obj 692 581 vsl 15 128 0 4 0 0 empty riseFactor1 empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 5398 1;
 #X obj 798 582 vsl 15 128 0 1 0 0 empty riseCutoff1 empty 0 -9 0 10
 -262144 -1 -1 0 1;
 #X obj 129 579 vsl 15 128 0.15 150 0 0 empty minRadius1 empty 0 -9
-0 10 -262144 -1 -1 411 1;
+0 10 -262144 -1 -1 835 1;
 #X obj 419 580 vsl 15 128 0 1 0 0 empty minDepth1 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X text 8 559 Bubbles/sec;
@@ -167,7 +167,7 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 710 1213 vsl 15 128 0.15 150 0 0 empty maxRadius3 empty 0 -9
 0 10 -262144 -1 -1 103 1;
 #X obj 516 1213 vsl 15 128 0 1000 0 0 empty avgRate3 empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 4953 1;
 #X obj 992 1213 vsl 15 128 0 1 0 0 empty maxDepth3 empty 0 -9 0 10
 -262144 -1 -1 12700 1;
 #X obj 1084 1214 vsl 15 128 0 10 0 0 empty expDepth3 empty 0 -9 0 10
@@ -217,8 +217,9 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X obj 122 469 * -100;
 #X obj 115 206 - 0.1;
 #X obj 33 845 *~ 1.9;
-#X obj 398 207 * 10000;
-#X obj 663 492 clip 0 300;
+#X obj 352 1260 *~ 30;
+#X obj 663 493 clip 0 400;
+#X obj 398 207 * 20000;
 #X connect 0 0 153 0;
 #X connect 1 0 153 0;
 #X connect 2 0 153 0;
@@ -260,7 +261,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 45 0 157 0;
 #X connect 45 0 162 0;
 #X connect 46 0 47 0;
-#X connect 47 0 174 0;
+#X connect 47 0 176 0;
 #X connect 48 0 79 0;
 #X connect 49 0 41 0;
 #X connect 50 0 46 0;
@@ -350,7 +351,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 150 0 118 0;
 #X connect 151 0 117 0;
 #X connect 153 0 173 0;
-#X connect 154 0 115 1;
+#X connect 154 0 174 0;
 #X connect 155 0 114 1;
 #X connect 157 0 158 0;
 #X connect 158 0 101 0;
@@ -370,5 +371,6 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 171 0 163 0;
 #X connect 172 0 170 0;
 #X connect 173 0 114 0;
-#X connect 174 0 175 0;
+#X connect 174 0 115 1;
 #X connect 175 0 136 0;
+#X connect 176 0 175 0;
