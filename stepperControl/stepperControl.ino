@@ -36,7 +36,7 @@ int counterId1, counterId2;
 int id1Preset[] = {0,  1, 1,  2, 2,  3, 3,  0};
 int id2Preset[] = {1, -1, 2, -1, 3, -1, 0, -1};
 
-const int stepCount = 640 * 11;
+const int stepCount = 640 * 10;
 const int skipRatio = 141;
 
 void rotate() {
@@ -70,23 +70,23 @@ void rotate() {
   if (id2 >= 0) digitalWrite(DIR[counterId2], LOW);
   for (int i = 0; i < stepCount; i++)
   {
-    if(i > stepCount - 300) {
-      t1 = t2 = t1 + 3;
-    }
+    //if(i > stepCount - 300) {
+    //  t1 = t2 = t1 + 3;
+    //}
 
     digitalWrite(PUL[id1], HIGH);
     if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[counterId1], HIGH);
       if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
-    }
+    //}
     delayMicroseconds(t1);
     digitalWrite(PUL[id1], LOW);
     if (id2 >= 0) digitalWrite(PUL[id2], LOW);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[counterId1], LOW);
       if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
-    }
+    //}
     delayMicroseconds(t2);
   }
   delay(50);
@@ -103,21 +103,21 @@ void unrotate() {
   if (id2 >= 0) digitalWrite(DIR[counterId2], HIGH);
   for (int i = 0; i < stepCount; i++)
   {
-    if(i > stepCount - 300) {
-      t1 = t2 = t1 + 3;
-    }
+    //if(i > stepCount - 300) {
+    //  t1 = t2 = t1 + 3;
+    //}
 
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[id1], HIGH);
       if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
-    }
+    //}
     digitalWrite(PUL[counterId1], HIGH);
     if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
     delayMicroseconds(t1);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[id1], LOW);
       if (id2 >= 0) digitalWrite(PUL[id2], LOW);
-    }
+    //}
     digitalWrite(PUL[counterId1], LOW);
     if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
     delayMicroseconds(t2);
