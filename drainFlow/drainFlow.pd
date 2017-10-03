@@ -1,4 +1,4 @@
-#N canvas 241 80 987 794 10;
+#N canvas 103 95 987 794 10;
 #X msg 33 765 avgRate \$1;
 #X msg 129 764 minRadius \$1;
 #X msg 227 764 maxRadius \$1;
@@ -35,7 +35,7 @@ NIW - soundobject.org/niw \; Project SkAT-VG - skatvg.eu;
 #X obj 798 582 vsl 15 128 0 1 0 0 empty riseCutoff1 empty 0 -9 0 10
 -262144 -1 -1 0 1;
 #X obj 129 579 vsl 15 128 0.15 150 0 0 empty minRadius1 empty 0 -9
-0 10 -262144 -1 -1 835 1;
+0 10 -262144 -1 -1 411 1;
 #X obj 419 580 vsl 15 128 0 1 0 0 empty minDepth1 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X text 8 559 Bubbles/sec;
@@ -202,8 +202,6 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X msg 906 284 \; avgRate2 0 \; minRadius2 1.5 \; maxRadius2 10 \;
 expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 0.1 \; riseCutoff2 0.9 \;;
-#X obj 663 492 clip 0 150;
-#X obj 398 207 * 200;
 #X obj 115 165 route flow;
 #X floatatom 115 187 5 0 0 0 - - -, f 5;
 #X obj 115 143 route plate;
@@ -219,6 +217,8 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X obj 122 469 * -100;
 #X obj 115 206 - 0.1;
 #X obj 33 845 *~ 1.9;
+#X obj 398 207 * 10000;
+#X obj 663 492 clip 0 300;
 #X connect 0 0 153 0;
 #X connect 1 0 153 0;
 #X connect 2 0 153 0;
@@ -250,7 +250,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 36 0 1 0;
 #X connect 38 0 39 0;
 #X connect 39 0 40 0;
-#X connect 40 0 170 0;
+#X connect 40 0 168 0;
 #X connect 41 0 42 0;
 #X connect 42 0 43 0;
 #X connect 43 0 44 0;
@@ -258,9 +258,9 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 45 0 50 0;
 #X connect 45 0 52 0;
 #X connect 45 0 157 0;
-#X connect 45 0 164 0;
+#X connect 45 0 162 0;
 #X connect 46 0 47 0;
-#X connect 47 0 161 0;
+#X connect 47 0 174 0;
 #X connect 48 0 79 0;
 #X connect 49 0 41 0;
 #X connect 50 0 46 0;
@@ -349,26 +349,26 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 142 0 127 0;
 #X connect 150 0 118 0;
 #X connect 151 0 117 0;
-#X connect 153 0 175 0;
+#X connect 153 0 173 0;
 #X connect 154 0 115 1;
 #X connect 155 0 114 1;
 #X connect 157 0 158 0;
 #X connect 158 0 101 0;
-#X connect 160 0 136 0;
-#X connect 161 0 160 0;
-#X connect 162 0 163 0;
-#X connect 163 0 167 0;
-#X connect 163 0 167 1;
-#X connect 163 0 174 0;
-#X connect 164 0 162 0;
-#X connect 165 0 166 0;
-#X connect 166 0 26 0;
-#X connect 168 0 171 0;
-#X connect 169 0 57 0;
-#X connect 169 0 159 0;
-#X connect 169 0 156 0;
-#X connect 170 0 169 0;
-#X connect 172 0 173 0;
-#X connect 173 0 165 0;
-#X connect 174 0 172 0;
-#X connect 175 0 114 0;
+#X connect 160 0 161 0;
+#X connect 161 0 165 0;
+#X connect 161 0 165 1;
+#X connect 161 0 172 0;
+#X connect 162 0 160 0;
+#X connect 163 0 164 0;
+#X connect 164 0 26 0;
+#X connect 166 0 169 0;
+#X connect 167 0 57 0;
+#X connect 167 0 159 0;
+#X connect 167 0 156 0;
+#X connect 168 0 167 0;
+#X connect 170 0 171 0;
+#X connect 171 0 163 0;
+#X connect 172 0 170 0;
+#X connect 173 0 114 0;
+#X connect 174 0 175 0;
+#X connect 175 0 136 0;
