@@ -24,13 +24,13 @@ void setup()
   netAddress = new NetAddress("127.0.0.1", 5006);
   netAddressPd = new NetAddress("127.0.0.1", 6005);
 
-  int d1 = 12 * 1000;
-  int d2 = 60 * 1000;
+  int d1 = 15 * 1000;
+  int d2 = 15 * 1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
   timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 10 * 1000);
   timerSoft2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 13 * 1000);
-  timerSoft21 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 20 * 1000);
+  timerSoft21 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 18 * 1000);
 }
 
 void draw() {
@@ -84,11 +84,11 @@ void onFinishEvent(CountdownTimer t) {
     m.add(1);
     oscP5.send(m, netAddressPd);
 
-    int d2 = int(30 + random(60)) * 1000;
+    int d2 = int(10 + random(10)) * 1000;
     timer2.configure(100, d2);
     //timer2.start();
     timerSoft2.start();
-    timerSoft21.configure(100, int(20 + random(20)) * 1000);
+    timerSoft21.configure(100, int(15 + random(5)) * 1000);
     timerSoft21.start();
   } else if (t == timer2) {
     //println("second one finished");
@@ -134,7 +134,7 @@ void oscEvent(OscMessage m) {
     && timerSoft21.isRunning() == false) {
       String dir = m.get(0).stringValue();
       println(m.get(0).stringValue());
-      int d1 = int(20 + random(10)) * 1000;
+      int d1 = int(10 + random(10)) * 1000;
       timer1.configure(100, d1);
       //timer1.start();
       timerSoft1.start();
