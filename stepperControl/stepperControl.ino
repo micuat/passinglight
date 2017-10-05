@@ -63,7 +63,7 @@ void rotate() {
   counterId1 = (id1 + 2) % 4;
   counterId2 = (id2 < 0) ? -1 : (id1 + 2 + 1) % 4;
 
-  t1 = t2 = 250 * 2;
+  t1 = t2 = 250 * 3;
   digitalWrite(DIR[id1], HIGH);
   if (id2 >= 0) digitalWrite(DIR[id2], HIGH);
   digitalWrite(DIR[counterId1], LOW);
@@ -76,17 +76,17 @@ void rotate() {
 
     digitalWrite(PUL[id1], HIGH);
     if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[counterId1], HIGH);
       if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
-    }
+    //}
     delayMicroseconds(t1);
     digitalWrite(PUL[id1], LOW);
     if (id2 >= 0) digitalWrite(PUL[id2], LOW);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[counterId1], LOW);
       if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
-    }
+    //}
     delayMicroseconds(t2);
   }
   delay(50);
@@ -107,17 +107,17 @@ void unrotate() {
     //  t1 = t2 = t1 + 3;
     //}
 
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[id1], HIGH);
       if (id2 >= 0) digitalWrite(PUL[id2], HIGH);
-    }
+    //}
     digitalWrite(PUL[counterId1], HIGH);
     if (id2 >= 0) digitalWrite(PUL[counterId2], HIGH);
     delayMicroseconds(t1);
-    if (i % skipRatio != 0) {
+    //if (i % skipRatio != 0) {
       digitalWrite(PUL[id1], LOW);
       if (id2 >= 0) digitalWrite(PUL[id2], LOW);
-    }
+    //}
     digitalWrite(PUL[counterId1], LOW);
     if (id2 >= 0) digitalWrite(PUL[counterId2], LOW);
     delayMicroseconds(t2);
