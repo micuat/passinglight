@@ -26,8 +26,8 @@ void setup()
   netAddress = new NetAddress("127.0.0.1", 5006);
   netAddressPd = new NetAddress("127.0.0.1", 6005);
 
-  int d1 = 20 * 1000;
-  int d2 = 15 * 1000;
+  int d1 = 20 * 750;//1000;
+  int d2 = 15 * 750;//1000;
   timer1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d1);
   timer2 = CountdownTimerService.getNewCountdownTimer(this).configure(100, d2);
   timerSoft1 = CountdownTimerService.getNewCountdownTimer(this).configure(100, 11000);
