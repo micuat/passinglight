@@ -1,4 +1,4 @@
-#N canvas 103 95 987 794 10;
+#N canvas 140 95 987 794 10;
 #X msg 33 765 avgRate \$1;
 #X msg 129 764 minRadius \$1;
 #X msg 227 764 maxRadius \$1;
@@ -35,7 +35,7 @@ NIW - soundobject.org/niw \; Project SkAT-VG - skatvg.eu;
 #X obj 798 582 vsl 15 128 0 1 0 0 empty riseCutoff1 empty 0 -9 0 10
 -262144 -1 -1 0 1;
 #X obj 129 579 vsl 15 128 0.15 150 0 0 empty minRadius1 empty 0 -9
-0 10 -262144 -1 -1 835 1;
+0 10 -262144 -1 -1 411 1;
 #X obj 419 580 vsl 15 128 0 1 0 0 empty minDepth1 empty 0 -9 0 10 -262144
 -1 -1 0 1;
 #X text 8 559 Bubbles/sec;
@@ -98,7 +98,7 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 411 900 vsl 15 128 0.15 150 0 0 empty maxRadius2 empty 0 -9
 0 10 -262144 -1 -1 835 1;
 #X obj 217 900 vsl 15 128 0 1000 0 0 empty avgRate2 empty 0 -9 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 1905 1;
 #X obj 693 900 vsl 15 128 0 1 0 0 empty maxDepth2 empty 0 -9 0 10 -262144
 -1 -1 12700 1;
 #X obj 785 901 vsl 15 128 0 10 0 0 empty expDepth2 empty 0 -9 0 10
@@ -167,7 +167,7 @@ expRadius1 7.7 \; minDepth1 0 \; maxDepth1 0.1 \; expDepth1 0 \; riseFactor1
 #X obj 710 1213 vsl 15 128 0.15 150 0 0 empty maxRadius3 empty 0 -9
 0 10 -262144 -1 -1 103 1;
 #X obj 516 1213 vsl 15 128 0 1000 0 0 empty avgRate3 empty 0 -9 0 10
--262144 -1 -1 5080 1;
+-262144 -1 -1 0 1;
 #X obj 992 1213 vsl 15 128 0 1 0 0 empty maxDepth3 empty 0 -9 0 10
 -262144 -1 -1 12700 1;
 #X obj 1084 1214 vsl 15 128 0 10 0 0 empty expDepth3 empty 0 -9 0 10
@@ -219,7 +219,8 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X obj 33 845 *~ 1.9;
 #X obj 663 493 clip 0 400;
 #X obj 398 207 * 20000;
-#X obj 352 1260 *~ 50;
+#X obj 302 1264 *~ 2;
+#X obj 186 1209 *~ 2;
 #X connect 0 0 153 0;
 #X connect 1 0 153 0;
 #X connect 2 0 153 0;
@@ -320,7 +321,7 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 111 0 109 0;
 #X connect 112 0 109 0;
 #X connect 113 0 106 0;
-#X connect 114 0 115 0;
+#X connect 114 0 177 0;
 #X connect 116 0 154 0;
 #X connect 117 0 154 0;
 #X connect 118 0 154 0;
@@ -374,3 +375,4 @@ expRadius2 3 \; minDepth2 0 \; maxDepth2 1 \; expDepth2 1 \; riseFactor2
 #X connect 174 0 136 0;
 #X connect 175 0 174 0;
 #X connect 176 0 115 1;
+#X connect 177 0 115 0;
