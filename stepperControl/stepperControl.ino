@@ -36,7 +36,7 @@ int counterId1, counterId2;
 int id1Preset[] = {0,  1, 1,  2, 2,  3, 3,  0};
 int id2Preset[] = {1, -1, 2, -1, 3, -1, 0, -1};
 
-const int stepCount = 4800;//640 * 10;
+const int stepCount = 3600;//4800;//640 * 10;
 const int skipRatio = 300;
 
 void rotate() {
